@@ -2,27 +2,16 @@
 import './index.css'
 
 const MatchCard = props => {
-  const {
-    umpires,
-    result,
-    manOfTheMatch,
-    id,
-    date,
-    venue,
-    competingTeam,
-    competingTeamLogo,
-    firstInnings,
-    secondInnings,
-    matchStatus,
-  } = props
+  const {matchData} = props
+  const {result, competingTeam, competingTeamLogo, matchStatus} = matchData
   return (
     <li className={`match-card ${matchStatus}`}>
       <img
         className="match-card-logo"
         src={competingTeamLogo}
-        alt={competingTeam}
+        alt={`competing team ${competingTeam}`}
       />
-      <h1 className="match-card-name">{competingTeam}</h1>
+      <p className="match-card-name">{competingTeam}</p>
       <p className="match-card-result">{result}</p>
       <p className="match-status">{matchStatus}</p>
     </li>

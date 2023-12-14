@@ -44,7 +44,7 @@ class Home extends Component {
           </div>
 
           {isShow ? (
-            <div testid="loader" className="loader-container">
+            <div data-testid="loader" className="loader-container">
               <Loader type="TailSpin" color="#ffffff" height={60} width={60} />
             </div>
           ) : (

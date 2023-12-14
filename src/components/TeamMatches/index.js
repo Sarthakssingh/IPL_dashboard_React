@@ -31,7 +31,6 @@ class TeamMatches extends Component {
         this.updateMatchDetails(eachItem),
       ),
     }
-    console.log(updatedData)
     this.setState({matchData: updatedData, isShowing: false, idd: id})
   }
 
@@ -54,11 +53,12 @@ class TeamMatches extends Component {
 
   render() {
     const {isShowing, matchData, idd} = this.state
+
     const {teamBannerUrl, latestMatchDetails, recentMatches} = matchData
     return (
       <div className={`app-team-matches-container ${idd}`}>
         {isShowing ? (
-          <div testid="loader" className="loader-container">
+          <div data-testid="loader" className="loader-container">
             <Loader type="TailSpin" color="#FFFFFF" height={70} width={70} />
           </div>
         ) : (
@@ -68,9 +68,10 @@ class TeamMatches extends Component {
               alt="team banner"
               className="team-banner"
             />
-            <ul>
-              <LatestMatch latestMatch={latestMatchDetails} />
-            </ul>
+            <LatestMatch
+              key={latestMatchDetails.id}
+              latestMatch={latestMatchDetails}
+            />
             <ul className="recent-matches-list">
               {recentMatches.map(eachItem => (
                 <MatchCard matchData={eachItem} key={eachItem.id} />
